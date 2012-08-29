@@ -1,3 +1,8 @@
+collabnet-plugin
+================
+
+The CollabNet Plugin provides integration with CollabNet TeamForge
+
 Running Tests
 =============
 There are some tests that require a live CTF instance.
