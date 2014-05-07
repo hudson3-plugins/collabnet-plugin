@@ -6,7 +6,7 @@ import hudson.security.Permission;
 
 import java.util.Collection;
 import java.util.logging.Logger;
-import org.springframework.security.Authentication;
+import org.springframework.security.core.Authentication;
 
 /**
  * Root ACL for the CollabNet Authorization.  It gives a set of users

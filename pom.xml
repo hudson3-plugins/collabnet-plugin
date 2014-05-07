@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.eclipse.hudson.plugins</groupId>
         <artifactId>hudson-plugin-parent</artifactId>    
-        <version>3.0.0-RC2</version>
+        <version>3.2.0-M0</version>
     </parent>
   
     <artifactId>collabnet</artifactId>
@@ -41,20 +41,20 @@
     <repositories>
         <repository>
             <id>collabnet-libs</id>
-            <url>file:${project.basedir}/lib</url>
+            <url>${project.basedir}/lib</url>
         </repository>
     </repositories>
-
+    
     <dependencies>
         <dependency>
-            <groupId>org.jvnet.hudson.plugins</groupId>
+            <groupId>org.hudsonci.plugins</groupId>
             <artifactId>promoted-builds</artifactId>
-            <version>1.11</version>
+            <version>2.4-h-3-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.jvnet.hudson.plugins</groupId>
+            <groupId>org.hudsonci.plugins</groupId>
             <artifactId>subversion</artifactId>
-            <version>1.23</version>
+            <version>2.3.8-h-1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.axis</groupId>    
@@ -114,6 +114,19 @@
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <artifactId>hudson-test-framework</artifactId>
+            <groupId>org.eclipse.hudson</groupId>
+            <type>jar</type>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hudson-maven-embedder</artifactId>
+                    <groupId>org.jvnet.hudson</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
@@ -122,7 +135,6 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <forkMode>never</forkMode>
                     <excludes>
                         <exclude>**/PblUploadTest.java</exclude>
                     </excludes>

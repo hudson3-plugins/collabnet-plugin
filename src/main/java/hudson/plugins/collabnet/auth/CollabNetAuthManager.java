@@ -3,9 +3,9 @@ package hudson.plugins.collabnet.auth;
 import java.rmi.RemoteException;
 
 import com.collabnet.ce.webservices.CollabNetApp;
-import org.springframework.security.Authentication;
-import org.springframework.security.AuthenticationManager;
-import org.springframework.security.BadCredentialsException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.Authentication;
 
 public class CollabNetAuthManager implements AuthenticationManager {
     private String collabNetUrl;

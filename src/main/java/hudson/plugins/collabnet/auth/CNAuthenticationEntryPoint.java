@@ -1,6 +1,5 @@
 package hudson.plugins.collabnet.auth;
 
-import hudson.model.Hudson;
 import hudson.security.HudsonAuthenticationEntryPoint;
 
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ import java.net.URLEncoder;
 import java.text.MessageFormat;
 
 import java.util.logging.Logger;
-import org.springframework.security.AuthenticationException;
+import org.springframework.security.core.AuthenticationException;
 
 public class CNAuthenticationEntryPoint 
     extends HudsonAuthenticationEntryPoint {
@@ -29,10 +28,9 @@ public class CNAuthenticationEntryPoint
      * Override the parent's commence so that the returned status is not
      * 403.
      */
-    @Override
-    public void commence(ServletRequest request, ServletResponse response, 
-                         AuthenticationException authException) 
-        throws IOException, ServletException {
+   @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
+            throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rsp = (HttpServletResponse) response;
 

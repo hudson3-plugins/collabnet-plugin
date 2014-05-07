@@ -20,9 +20,9 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
-import org.springframework.security.providers.anonymous.AnonymousProcessingFilter;
-import org.springframework.security.ui.ExceptionTranslationFilter;
-import org.springframework.security.userdetails.memory.UserAttribute;
+import org.springframework.security.core.userdetails.memory.UserAttribute;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 
 
 public class CollabNetSecurityRealm extends SecurityRealm {
@@ -96,7 +96,7 @@ public class CollabNetSecurityRealm extends SecurityRealm {
      */
     @Override
     public Filter[] getCommonFilters() {
-        AnonymousProcessingFilter anonymousProcessingFilter = new AnonymousProcessingFilter();
+        AnonymousAuthenticationFilter anonymousProcessingFilter = new AnonymousAuthenticationFilter();
         anonymousProcessingFilter.setKey("anonymous"); // must match with the AnonymousProvider
         UserAttribute userAttribute = new UserAttribute();
         userAttribute.setPassword("anonymous");

@@ -2,7 +2,7 @@ package hudson.plugins.collabnet.auth;
 
 import hudson.security.ACL;
 import hudson.security.Permission;
-import org.springframework.security.Authentication;
+import org.springframework.security.core.Authentication;
 
 /**
  * Gives user permission if the user is authenticated.

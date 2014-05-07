@@ -2,7 +2,7 @@ package hudson.plugins.collabnet.auth;
 
 import com.collabnet.ce.webservices.CollabNetApp;
 import hudson.model.Hudson;
-import org.springframework.security.Authentication;
+import org.springframework.security.core.Authentication;
 
 /**
  * Provides access to the {@link CollabNetApp} associated with the current {@link Authentication}

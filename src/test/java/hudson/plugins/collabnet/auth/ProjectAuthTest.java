@@ -18,7 +18,7 @@ import hudson.plugins.promoted_builds.PromotionProcess;
 import hudson.plugins.promoted_builds.conditions.ManualCondition;
 import hudson.security.ACL;
 import java.rmi.RemoteException;
-import org.springframework.security.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * Test authorization for a Jenkins job associated with a CN project.

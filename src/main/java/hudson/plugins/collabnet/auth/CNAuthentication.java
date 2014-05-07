@@ -7,13 +7,14 @@ import hudson.model.Hudson;
 import hudson.security.Permission;
 
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.logging.Logger;
-import org.springframework.security.Authentication;
-import org.springframework.security.GrantedAuthority;
-import org.springframework.security.GrantedAuthorityImpl;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
 /**
  * Authentication class for CollabNet.
@@ -86,12 +87,12 @@ public class CNAuthentication implements Authentication {
     /**
      * @return a copy of the granted authorities.
      */
-    public GrantedAuthority[] getAuthorities() {
+    public Collection<? extends GrantedAuthority>  getAuthorities() {
         GrantedAuthority[] authCopy = 
             new GrantedAuthority[this.authorities.length];
         System.arraycopy(this.authorities, 0, authCopy, 0, 
                          this.authorities.length);
-        return authCopy;
+        return Arrays.asList(authCopy);
     }
     
     public String getPrincipal() {

@@ -1,31 +1,28 @@
 package hudson.plugins.collabnet.auth;
 
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.util.logging.Logger;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import java.net.URLEncoder;
-
+import com.collabnet.ce.webservices.CollabNetApp;
 import hudson.model.Hudson;
 import hudson.plugins.collabnet.util.CommonUtil;
 import hudson.security.SecurityRealm;
-
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.rmi.RemoteException;
+import java.util.Arrays;
+import java.util.logging.Logger;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
-
-import com.collabnet.ce.webservices.CollabNetApp;
-import org.springframework.security.Authentication;
-import org.springframework.security.GrantedAuthority;
-import org.springframework.security.GrantedAuthorityImpl;
-import org.springframework.security.context.SecurityContextHolder;
-import org.springframework.security.providers.anonymous.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * Class for filtering CollabNet auth information for SSO.
@@ -124,7 +121,7 @@ public class CNFilter implements Filter {
 
         if (logoff) {
             auth = new AnonymousAuthenticationToken("anonymous","anonymous",
-                new GrantedAuthority[]{new GrantedAuthorityImpl("anonymous")});
+                Arrays.asList(new GrantedAuthority[]{new GrantedAuthorityImpl("anonymous")}));
         }
 
         // ensure that a session exists before we set context in it
